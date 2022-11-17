@@ -26,14 +26,15 @@ export default function AddImages({setOpen,setItemData}) {
     const handleAdd = async ()=>{
         const data = await axios.post(process.env.REACT_APP_SERVER_URL+"/user/addimages",
         {
-            images:showimages
+            images:showimages,
+            headers: {"Access-Control-Allow-Origin": "*"}
         },{
             withCredentials: true
         })
         if(data.status===200){
             alert(data.data.message);
             const url = process.env.REACT_APP_SERVER_URL+"/user/getimages";
-            const raw = await axios.get(url, { withCredentials: true });
+            const raw = await axios.get(url,{headers: {"Access-Control-Allow-Origin": "*"}}, { withCredentials: true });
             setItemData(raw.data.images)
             setOpen(false);
         }else{

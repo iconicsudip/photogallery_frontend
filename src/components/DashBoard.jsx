@@ -45,7 +45,7 @@ export default function DashBoard() {
     const getImages = async ()=>{
         try{
             const url = process.env.REACT_APP_SERVER_URL+"/user/getimages";
-            const raw = await axios.get(url, { withCredentials: true });
+            const raw = await axios.get(url,{headers: {"Access-Control-Allow-Origin": "*"}}, { withCredentials: true });
             if(raw.status===200){
                 setItemData(raw.data.images)
             }else if(raw.status===206){
