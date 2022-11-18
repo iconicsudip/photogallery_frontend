@@ -31,7 +31,6 @@ export default function ShowImage({item,getImages}) {
             const url = process.env.REACT_APP_SERVER_URL+"/user/deleteimage";
             const raw = await axios.post(url,
             {
-                headers: {"Access-Control-Allow-Origin": "*"},
                 id:item._id
             },{
                 withCredentials: true
