@@ -15,10 +15,13 @@ function App() {
     try{
       const url = process.env.REACT_APP_SERVER_URL+"/auth/login/success";
       const data = await axios.get(url,
-        {headers: {
-          'Content-Type': 'application/json',
-          'Access-Control-Allow-Origin':'*'
-        }},{ withCredentials: true }
+        {
+          headers: {
+            'Content-Type': 'application/json',
+            'Access-Control-Allow-Origin':'*'
+          },
+          withCredentials: true
+        }
       );
       setUser(data.data.user)
     }catch(err){
