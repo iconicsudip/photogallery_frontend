@@ -14,7 +14,12 @@ function App() {
   const getUser = async ()=>{
     try{
       const url = process.env.REACT_APP_SERVER_URL+"/auth/login/success";
-      const data = await axios.get(url,{ withCredentials: true },{headers: {'Content-Type': 'application/json'}});
+      const data = await axios.get(url,{ withCredentials: true },
+        {headers: {
+          'Content-Type': 'application/json',
+          'Access-Control-Allow-Origin':'*'
+        }}
+      );
       setUser(data.data.user)
     }catch(err){
       console.log(err);
